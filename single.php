@@ -2,36 +2,30 @@
 
 		<h2><?php the_title(); ?></h2>
 
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-			
-		<div class="post">
+		<?php if (have_posts()) : 
+			while (have_posts()) : 
+				the_post();
+				get_template_part('navigation');
+		?>
 
-			<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
+				<div class="post">
 
-		</div> <!-- /end .post -->
+					<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
 
-		<h5><?php edit_post_link('Edit', '<p>', '</p>'); ?></h5>
+				</div> <!-- /end .post -->
 
-		<div class="home_bottom">
+				<h5><?php edit_post_link('Edit', '<p>', '</p>'); ?></h5>
 
-		</div> <!-- /end .home_bottom -->
+				<div class="home_bottom">
 
-		<br />
+				</div> <!-- /end .home_bottom -->
 
-		<br />
+				<br />
 
-		<div class="navigation">
-
-			<?php if (get_adjacent_post(false, '', true)): // if there are older posts ?>
-    			<p><strong>Posted</strong>: <?php the_date('m.d.Y'); ?></p>
-			<p><strong>Previous post</strong>: <?php previous_post_link('%link'); ?></p>
-			<?php endif; ?>
-
-			<?php if (get_adjacent_post(false, '', false)): // if there are newer posts ?>
-    			<p><strong>Next post</strong>: <?php next_post_link('%link'); ?></p>
-			<?php endif; ?>
-
-		</div> <!-- /end .navigation -->
+				<br />
+				
+				<div class="all_posts"><a href="archives">See all posts &raquo;</a>
+				</div> <!-- /end .all_posts -->
 
 		<?php endwhile; else: ?>
 
@@ -39,9 +33,8 @@
 
 		<?php endif; ?>
 
-		<?php if(comments_open()) : ?>  
-			<?php comments_template(); ?>
-		<?php else : ?>  
-		<?php endif; ?> 
+
+
+		 
 
 <?php get_footer(); ?>
