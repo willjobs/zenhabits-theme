@@ -1,10 +1,9 @@
 <div class="navigation">
-	<p><strong>Posted</strong>:&nbsp;
+	<p><strong>Posted</strong>:
 		<?php 
 			the_date('m.d.Y'); 
-			// 2017-01-15 is the last backdated post I had (for a while anyway)
 			// no way to see when a post was _actually_ published, vs. backdated
-			if(strtotime(get_the_modified_date()) > strtotime('2017-01-17') && strtotime(get_the_modified_date()) > strtotime(get_the_date())) {
+			if(strtotime(get_the_modified_date()) > strtotime(get_the_date())) {
 				echo ' | Updated: ' . get_the_modified_date('m.d.Y');
 			} 
 		?>
