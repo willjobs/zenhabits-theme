@@ -46,7 +46,7 @@ Template Name: Archives
 			<tr class="archive">
 				<th><?php echo $arcresult->dayofmonth; ?></th>
 				<td id=p<?php echo $arcresult->ID; ?>>
-					<a href="../<?php echo $arcresult->post_name; ?>"><?php 
+					<a href="<?php echo get_site_url() . '/' . $arcresult->post_name; ?>"><?php 
 							echo strip_tags(apply_filters('the_title', $arcresult->post_title));
 							if(date('Y-m-d', strtotime($arcresult->post_modified)) > date('Y-m-d',strtotime($arcresult->post_date))) {
 								echo ' <span style="font-weight: bold;">(Updated: ' . date_format(date_create($arcresult->post_modified),'m.d.Y') . ')</span>';

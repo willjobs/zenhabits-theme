@@ -19,7 +19,7 @@
 		
 
 
-		<div class="all_posts"><a href="archives">See all posts &raquo;</a>
+		<div class="all_posts"><a href="<?php echo get_site_url(); ?>/archives">See all posts &raquo;</a>
 		</div> <!-- /end .all_posts -->
 
 		<?php endwhile; ?>

@@ -16,25 +16,18 @@
 	<meta property="og:description" content="<?php echo get_excerpt_by_id(get_the_ID()); ?>" />
 
 	<?php
-		$images = get_posts( array(
-		'post_parent'	   => get_the_ID(),
-		'post_type'		 => 'attachment',
-		'numberposts'	   => 1, // Single attachment
-		'post_status'	   => null,
-		'post_mime_type'	=> 'image', // Only images
-		'orderby'		   => 'post_date',
-		'order'			 => 'ASC'
-		) );
+		global $post, $posts;
+		$first_img = '';
+		$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+		$first_img = $matches [1] [0];
 
-		if ( ! empty( $images ) ) {
-			$thumb = wp_get_attachment_image_src( $images[0]->ID, 'thumbnail' );
-			$thumbnail = $thumb[0];
-		} else {
-			$thumbnail = get_site_icon_url();
+		if(empty($first_img)){
+			$first_img = get_site_icon_url();
 		}
+
 	?>
 
-	<meta property="og:image" content="<?php echo $thumbnail; ?>" />
+	<meta property="og:image" content="<?php echo $first_img; ?>" />
 	
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" />
 
